@@ -13,7 +13,8 @@ app.post("/webLead", async (req, res) => {
   if (json) { 
     json.leads.forEach(async (lead) => {
       const retorno = await axios.get(
-        `${process.env.LINK_WEBHOOK_CONTACTS}?FIELDS[NAME]=${lead.name}&FIELDS[EMAIL][0][VALUE]=${lead.email}&FIELDS[EMAIL][0][VALUE_TYPE]=WORK&FIELDS[PHONE][0][VALUE]=${lead.personal_phone}&FIELDS[PHONE][0][VALUE_TYPE]=WORK`
+        `${process.env.LINK_WEBHOOK_CONTACTS}?FIELDS[NAME]=${lead.name}&FIELDS[EMAIL][0][VALUE]=${lead.email}&FIELDS[EMAIL][0][VALUE_TYPE]=WORK&
+          FIELDS[PHONE][0][VALUE]=${lead.personal_phone}&FIELDS[PHONE][0][VALUE_TYPE]=WORK&FIELDS[UF_CRM_1711132565711]=${lead.tags}`
       );
       console.log(retorno.data.result);
       await axios.get(
