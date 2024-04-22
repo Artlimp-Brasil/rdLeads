@@ -13,11 +13,11 @@ app.post("/webLead", async (req, res) => {
   if (json) { 
     json.leads.forEach(async (lead) => {
       const retorno = await axios.get(
-        `https://artlimpbrasil.bitrix24.com.br/rest/588/2rl5c6ozufch2c58/crm.contact.add.json?FIELDS[NAME]=${lead.name}&FIELDS[EMAIL][0][VALUE]=${lead.email}&FIELDS[EMAIL][0][VALUE_TYPE]=WORK&FIELDS[PHONE][0][VALUE]=${lead.personal_phone}&FIELDS[PHONE][0][VALUE_TYPE]=WORK`
+        `${process.env.LINK_WEBHOOK_CONTACTS}?FIELDS[NAME]=${lead.name}&FIELDS[EMAIL][0][VALUE]=${lead.email}&FIELDS[EMAIL][0][VALUE_TYPE]=WORK&FIELDS[PHONE][0][VALUE]=${lead.personal_phone}&FIELDS[PHONE][0][VALUE_TYPE]=WORK`
       );
       console.log(retorno.data.result);
       await axios.get(
-        `https://artlimpbrasil.bitrix24.com.br/rest/588/v44wwd5tg917v77k/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=NEW&FIELDS[CONTACT_ID]=${retorno.data.result}`,
+        `${process.env.LINK_WEBHOOK_DEALS}?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C36:NEW&FIELDS[CATEGORY_ID]=36&FIELDS[CONTACT_ID]=${retorno.data.result}`,
       console.log('Lead enviado com sucesso')
       );
     });
