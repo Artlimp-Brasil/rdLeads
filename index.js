@@ -21,10 +21,10 @@
 
         // Procura se há uma empresa já existente Cadastrada
         const getEmpresas = await axios.get(
-          `${process.env.LINK_WEBHOOK}/crm.company.list.json?FILTER[UF_CRM_CNPJ]=${lead.cf_cnpj}`
+          `${process.env.LINK_WEBHOOK}/crm.company.list.json?FILTER[UF_CRM_CNPJ]=${lead.custom_fields.CNPJ}`
 
         );
-
+        
         // Procura se há contato já criado no bitrix com o mesmo ID de cliente do RD Marketing
         const retorno = await axios.get(
           `${process.env.LINK_WEBHOOK}/crm.contact.list.json?FILTER[UF_CRM_1713969606790]=${lead.uuid}`
