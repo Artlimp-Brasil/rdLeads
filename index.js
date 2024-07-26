@@ -56,7 +56,7 @@
               
             // Cria card com contato existente e empresa vinculados  
             const cardId = await axios.get(
-              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C36:NEWFIELDS[CATEGORY_ID]=36&FIELDS[CONTACT_ID]=${contatoId}&FIELDS[COMPANY_ID]=${empresaId}`
+              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[CONTACT_ID]=${contatoId}&FIELDS[COMPANY_ID]=${empresaId}`
             );
             // Log
             console.log('Lead enviado com sucesso. Card ID: ' + cardId.data.result + '. Contato Id: ' + contatoId)
@@ -64,7 +64,7 @@
 
             // Cria card com o contato existente
             const cardId = await axios.get(
-              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C36:NEW&FIELDS[CATEGORY_ID]=36&FIELDS[CONTACT_ID]=${contatoId}`);
+              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[CONTACT_ID]=${contatoId}`);
 
             // Log   
             console.log('Lead enviado com sucesso. Card ID: ' + cardId.data.result + '. Contato Id: ' + contatoId)
@@ -94,7 +94,7 @@
             );
             // Cria card com novo contato e empresa vinculados
             const cardId = await axios.get(
-              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C36:NEW&FIELDS[CATEGORY_ID]=36&FIELDS[COMPANY_ID]=${empresaId}&FIELDS[CONTACT_ID]=${novoContatoId}`
+              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[COMPANY_ID]=${empresaId}&FIELDS[CONTACT_ID]=${novoContatoId}`
             );
             
             // Log
@@ -102,7 +102,7 @@
           } else {
             // Cria Novo Card Com Contato Criado
             const cardId = await axios.get(
-              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C36:NEW&FIELDS[CATEGORY_ID]=36&FIELDS[CONTACT_ID]=${novoContatoId}`
+              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[CONTACT_ID]=${novoContatoId}`
             );
 
             // Log  
