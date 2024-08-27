@@ -56,7 +56,7 @@
               
             // Cria card com contato existente e empresa vinculados  
             const cardId = await axios.get(
-              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[CONTACT_ID]=${contatoId}&FIELDS[COMPANY_ID]=${empresaId}`
+              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[CONTACT_ID]=${contatoId}&FIELDS[COMPANY_ID]=${empresaId}&FIELDS[SOURCE_ID]="UC_VBSV3L"`
             );
             // Log
             console.log('Lead enviado com sucesso. Card ID: ' + cardId.data.result + '. Contato Id: ' + contatoId)
@@ -64,7 +64,7 @@
 
             // Cria card com o contato existente
             const cardId = await axios.get(
-              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[CONTACT_ID]=${contatoId}`);
+              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[CONTACT_ID]=${contatoId}&FIELDS[SOURCE_ID]="UC_VBSV3L"`);
 
             // Log   
             console.log('Lead enviado com sucesso. Card ID: ' + cardId.data.result + '. Contato Id: ' + contatoId)
@@ -74,7 +74,7 @@
         else {
           //Se não encontrar contato existente > Cria novo contato 
           const novoContato = await axios.get(
-            `${process.env.LINK_WEBHOOK}/crm.contact.add.json?FIELDS[NAME]=${lead.name}&FIELDS[EMAIL][0][VALUE]=${lead.email}&FIELDS[EMAIL][0][VALUE_TYPE]=WORK&FIELDS[PHONE][0][VALUE]=${lead.personal_phone}&FIELDS[PHONE][0][VALUE_TYPE]=WORK&FIELDS[UF_CRM_1711132565711]=${lead.tags}&FIELDS[UF_CRM_1713969606790]=${lead.uuid}&FIELDS[UF_CRM_1708975763880]=${lead.city}`);
+            `${process.env.LINK_WEBHOOK}/crm.contact.add.json?FIELDS[NAME]=${lead.name}&FIELDS[EMAIL][0][VALUE]=${lead.email}&FIELDS[EMAIL][0][VALUE_TYPE]=WORK&FIELDS[PHONE][0][VALUE]=${lead.personal_phone}&FIELDS[PHONE][0][VALUE_TYPE]=WORK&FIELDS[UF_CRM_1711132565711]=${lead.tags}&FIELDS[UF_CRM_1713969606790]=${lead.uuid}&FIELDS[UF_CRM_1708975763880]=${lead.city}&FIELDS[SOURCE_ID]="UC_VBSV3L"`);
 
           const novoContatoId = novoContato.data.result
 
@@ -85,7 +85,7 @@
 
             // Se encontrado, vincula o contato à empresa encontrada
             await axios.get(
-              `${process.env.LINK_WEBHOOK}/crm.contact.company.add.json?ID=${novoContatoId}&FIELDS[COMPANY_ID]=${empresaId})`
+              `${process.env.LINK_WEBHOOK}/crm.contact.company.add.json?ID=${novoContatoId}&FIELDS[COMPANY_ID]=${empresaId}`
             );
 
             //Atualiza o responsável pelo contato criado pelo mesmo responsável da empresa encontrada
@@ -94,7 +94,7 @@
             );
             // Cria card com novo contato e empresa vinculados
             const cardId = await axios.get(
-              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[COMPANY_ID]=${empresaId}&FIELDS[CONTACT_ID]=${novoContatoId}`
+              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[COMPANY_ID]=${empresaId}&FIELDS[CONTACT_ID]=${novoContatoId}&FIELDS[SOURCE_ID]="UC_VBSV3L"`
             );
             
             // Log
@@ -102,7 +102,7 @@
           } else {
             // Cria Novo Card Com Contato Criado
             const cardId = await axios.get(
-              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[CONTACT_ID]=${novoContatoId}`
+              `${process.env.LINK_WEBHOOK}/crm.deal.add.json?FIELDS[TITLE]=${lead.name}&FIELDS[STAGE_ID]=C40:UC_8H3ULI&FIELDS[CATEGORY_ID]=40&FIELDS[CONTACT_ID]=${novoContatoId}&FIELDS[SOURCE_ID]="UC_VBSV3L"`
             );
 
             // Log  
